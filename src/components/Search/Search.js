@@ -208,8 +208,6 @@ class Search extends Component {
       nfts: ownednfts,
       nftsloaded: true
     });
-    console.log(`NFTs:`);
-    console.log(this.state.nfts);
   }
 
   async connectWallet() {
@@ -296,7 +294,7 @@ class Search extends Component {
       denyButtonText: 'No Thanks...'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        contract.functions.setIPFSAttrLink(this.state.name.toUpperCase(), result.value).catch((e) => {
+        contract.functions.setIPFSAttrLink(this.state.name.toUpperCase(), JSON.stringify(result.value)).catch((e) => {
 
           Toastify({
             text: `ERROR, try reloading`,

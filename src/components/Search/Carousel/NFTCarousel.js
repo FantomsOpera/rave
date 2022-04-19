@@ -27,9 +27,7 @@ class NFTCarousel extends Component {
   */
 
   render() {
-    console.log(this.props);
-    console.log(this.props.nfts);
-    return (
+    return ( 
     <div style={{paddingLeft: 'calc(50% - 30vh)'}}>
       <Carousel width="50%" showThumbs={this.props.showThumbs}>
         {this.props.nfts.nekos.map((obj, i) => {
