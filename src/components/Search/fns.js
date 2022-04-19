@@ -842,5 +842,5 @@ export const abi = [
   ];
 
 export const overrides = {
-  value: utils.parseEther("0")
+  value: utils.parseEther("1")
 }
