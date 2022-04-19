@@ -185,7 +185,7 @@ class Search extends Component {
       }
     });
     //                                                                                                              \\
-    let chunk = new ethers.Contract(nfts[11],nabi,prov);
+    let chunk = new ethers.Contract(nfts[12],nabi,prov);
     await chunk.functions.balanceOf(this.state.owner).then(async res => {
       if (res[0] <= 0) return;
       for (let i = 0; i < res[0]; i++) {
@@ -195,7 +195,7 @@ class Search extends Component {
       }
     });
     //                                                                                                              \\
-    let ppunks = new ethers.Contract(nfts[11],nabi,prov);
+    let ppunks = new ethers.Contract(nfts[13],nabi,prov);
     await ppunks.functions.balanceOf(this.state.owner).then(async res => {
       if (res[0] <= 0) return;
       for (let i = 0; i < res[0]; i++) {
