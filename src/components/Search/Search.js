@@ -74,27 +74,27 @@ class Search extends Component {
   }
 
   async resolveName() {
+    let owner;
+    let avatar;
+    let ipfs;
+    let isOwned;
     await fns.functions.getOwnerOfName(this.state.name.toUpperCase()).then(res => {
-      this.setState({
-        owner: res[0]
-      });
+      owner = res[0];
     });
     await fns.functions.getAvatar(this.state.name.toUpperCase()).then(res => {
-      this.setState({
-        avatar: res[0]
-      });
+      avatar = res[0];
     });
     await fns.functions.getAttrLink(this.state.name.toUpperCase()).then(res => {
-      this.setState({
-        ipfs: res[0]
-      });
+      ipfs = res[0];
     });
     await fns.functions.isOwnedByMapping(this.state.name.toUpperCase()).then(res => {
-      this.setState({
-        isOwned: res[0]
-      });
+      isOwned = res[0];
     });
     this.setState({
+      owner: owner,
+      avatar: avatar,
+      ipfs: ipfs,
+      isOwned: isOwned,
       hasDone: true,
     });
     if (!this.state.isOwned) return;
@@ -211,7 +211,21 @@ class Search extends Component {
   }
 
   async connectWallet() {
-    console.log("clicked connectWallet")
+    console.log("clicked connectWallet");
+    window.ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: [{
+        chainId: "0xFA",
+        rpcUrls: ["https://rpc.ftm.tools"],
+        chainName: "Fantom Opera",
+        nativeCurrency: {
+            name: "FTM",
+            symbol: "FTM",
+            decimals: 18
+        },
+        blockExplorerUrls: ["https://ftmscan.com/"]
+      }]
+    });
     const provider = new ethers.providers.Web3Provider(window.ethereum, 250);
     let signer = provider.getSigner();
     let accounts = await provider.send("eth_requestAccounts", []);
@@ -265,6 +279,10 @@ class Search extends Component {
     let contract = this.state.contract;
     Swal.fire({
       title: 'Set wallet addresses for different chains.',
+      confirmButtonText: 'Set!',
+      denyButtonText: 'No Thanks...',
+      showDenyButton: true,
+      showConfirmButton: true,
       html:
         '<p>Input your wallet addresses for different blockchains here, and have them stored on-chain! You can leave some fields blank. <br />' +
         '<input id="btc" placeholder="Bitcoin" class="swal2-input">' +
@@ -291,7 +309,6 @@ class Search extends Component {
           })
         })
       },
-      denyButtonText: 'No Thanks...'
     }).then(async (result) => {
       if (result.isConfirmed) {
         contract.functions.setIPFSAttrLink(this.state.name.toUpperCase(), JSON.stringify(result.value)).catch((e) => {
@@ -311,7 +328,7 @@ class Search extends Component {
     let contract = this.state.contract;
     Swal.fire({
       title: `Transfer ${this.state.name}`,
-      html: `This will transfer ALL ownership of the name ${this.state.name}. Be acreful with this.<br><br>Learn more at our <a href='https://fantoms.gitbook.io/rave'>docs</a>.`,
+      html: `This will transfer ALL ownership of the name ${this.state.name}. Be careful with this.<br><br>Learn more at our <a href='https://fantoms.gitbook.io/rave'>docs</a>.`,
       icon: 'info',
       input: 'text',
       inputAttributes: {
@@ -338,7 +355,6 @@ class Search extends Component {
     if (!this.state.hasDone) {
       this.resolveName();
     }
-
     return (
       <>
         <title>{`Rave Name: ${this.state.name}`}</title>
@@ -439,7 +455,29 @@ class Search extends Component {
           </Card>
         </div>}
         <br />
-        {(this.state.isOwned && this.state.nftsloaded ) && <NFTCarousel nfts={this.state.nfts} showThumbs={false} style={{width: '75vh'}}/>}
+        <br />
+        {(this.state.isOwned && this.state.nftsloaded) &&
+        <div style={{paddingLeft: 'calc(50% - 75vh)'}}>
+          <Card sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            alignSelf: "center",
+            textAlign: "center",
+            padding: "28px 24px",
+            borderRadius: "20px",
+            backgroundColor: "var(--special-w)",
+              width: "150vh",
+            }} mt="42px">
+              <Heading as="h2" style={{
+                fontFamily: 'Nunito Sans'
+              }}>
+                NFTs owned by {this.state.name}.
+              </Heading>
+              <NFTCarousel nfts={this.state.nfts} showThumbs={false} style={{width: '75vh', paddingLeft:'20vh'}}/>
+          </Card>
+        </div>
+        }
         <br /><br />
         <div
           style={{

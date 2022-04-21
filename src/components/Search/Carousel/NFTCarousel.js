@@ -11,24 +11,9 @@ class NFTCarousel extends Component {
     super(props);
   }
 
-  /*
-  let ownednfts = {
-    nekos: [],
-    magicats: [],
-    umans: [],
-    bit: [],
-    netizens: [],
-    beardies: [],
-    bitdaemons: [],
-    cyber: [],
-    og: [],
-    ultimates: []
-  };
-  */
-
   render() {
-    return ( 
-    <div style={{paddingLeft: 'calc(50% - 30vh)'}}>
+    return (
+    <div style={{paddingLeft: 'calc(50% - (22.5vh + 11px))'}}>
       <Carousel width="50%" showThumbs={this.props.showThumbs}>
         {this.props.nfts.nekos.map((obj, i) => {
           let logo = `https://storage.googleapis.com/cyber-neko/genesis-collection/full/${obj}`
