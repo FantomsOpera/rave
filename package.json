@@ -31,6 +31,7 @@
     "server": "node-env-run server --exec nodemon",
     "dev": "run-p server start"
   },
+  "homepage": ".",
   "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
