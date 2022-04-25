@@ -251,7 +251,7 @@ class Search extends Component {
     let contract = this.state.contract;
     Swal.fire({
       title: `Set an avatar for ${this.state.name}`,
-      html: `You must enter a link, containing your avatar. <br><br>This link should be in .png or .jpg form.<br><br>Learn more at our <a href='https://fantoms.gitbook.io/rave'>docs</a>.`,
+      html: `You must enter a link, containing your avatar. <br><br>This link should be in .png or .jpg form.<br><br>Learn more at our <a href='https://docs.rave.domains/'>docs</a>.`,
       icon: 'info',
       input: 'text',
       inputAttributes: {
@@ -328,7 +328,7 @@ class Search extends Component {
     let contract = this.state.contract;
     Swal.fire({
       title: `Transfer ${this.state.name}`,
-      html: `This will transfer ALL ownership of the name ${this.state.name}. Be careful with this.<br><br>Learn more at our <a href='https://fantoms.gitbook.io/rave'>docs</a>.`,
+      html: `This will transfer ALL ownership of the name ${this.state.name}. Be careful with this.<br><br>Learn more at our <a href='https://docs.rave.domains'>docs</a>.`,
       icon: 'info',
       input: 'text',
       inputAttributes: {
