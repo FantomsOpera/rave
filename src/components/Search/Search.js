@@ -53,7 +53,8 @@ class Search extends Component {
       ipfs: '',
       isOwned: false,
       isOwner: false,
-      hasDone: false
+      hasDone: false,
+      networth: 0,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,6 +79,7 @@ class Search extends Component {
     let avatar;
     let ipfs;
     let isOwned;
+    let worth;
     await fns.functions.getOwnerOfName(this.state.name.toUpperCase()).then(res => {
       owner = res[0];
     });
@@ -90,12 +92,19 @@ class Search extends Component {
     await fns.functions.isOwnedByMapping(this.state.name.toUpperCase()).then(res => {
       isOwned = res[0];
     });
+    await fetch(`https://openapi.debank.com/v1/user/chain_balance?id=${owner}&chain_id=ftm&is_all=true&has_balance=true`).then(async res => {
+      console.log(res);
+      let json = await res.json();
+      console.log(json);
+      worth = json["usd_value"];
+    })
     this.setState({
       owner: owner,
       avatar: avatar,
       ipfs: ipfs,
       isOwned: isOwned,
       hasDone: true,
+      networth: worth
     });
     if (!this.state.isOwned) return;
     let ownednfts = {
@@ -340,8 +349,8 @@ class Search extends Component {
       denyButtonText: 'No thanks...'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        contract.functions.transferName(this.state.name.toUpperCase(), result.value).catch((e) => {
-
+        contract.functions.transferName(this.state.owner, result.value, this.state.name.toUpperCase()).catch((e) => {
+          console.error(e);
           Toastify({
             text: `ERROR, try reloading`,
             duration: 2000
@@ -354,6 +363,9 @@ class Search extends Component {
   render() {
     if (!this.state.hasDone) {
       this.resolveName();
+    }
+    if (this.state.hasDone) {
+      console.log(this.state)
     }
     return (
       <>
@@ -390,6 +402,11 @@ class Search extends Component {
             {this.state.name} <a href={`https://ftmscan.com/address/${constants["NoAddress"]}`} target="_blank" rel="noreferrer" className="Address-text">Not owned</a>
           </p>
         )}
+        {this.state.isOwned &&
+          <p style={{
+            fontFamily: 'Nunito Sans'
+          }}>{"Net Worth: $" + this.state.networth || "loading..."}</p>
+        }
         <button onClick={this.connectWallet} className="connectWallet" style={{
             fontFamily: 'Nunito Sans'
         }}>{this.state.account || "Connect Wallet"}</button>

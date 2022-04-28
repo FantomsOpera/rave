@@ -3,10 +3,17 @@ import logo from '../../RaveBase.png';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
 
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
 import Desc from './Desc/Desc.js';
 import Gallery from './Gallery/Gallery.js';
 import Avatar from './Avatar/Avatar.js';
 import Integrations from './Integrations/Integrations.js';
+
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css";
 
 import twitter from '../../images/Twitter-Logo.png';
 
@@ -18,14 +25,33 @@ class Home extends Component {
     this.state = {
       name: '',
       owner: '',
+      oxswitch: false,
     };
     this.history = props.history;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSwitch = this.handleSwitch.bind(this);
+    let toastToShow = Math.floor(Math.random() * 2);
+    if (toastToShow === 0) {
+      Toastify({
+        text: `Buy our governance token, $OPR on SpiritSwap!`,
+        duration: `3000`,
+        destination: `https://swap.spiritswap.finance/#/swap/0x16dbD24713C1E6209142BCFEED8C170D83f84924`
+      }).showToast();
+    } else if (toastToShow === 1) {
+      Toastify({
+        text: `Try searching for an 0x-prefixed name!`,
+        duration: `3000`,
+      }).showToast();
+    }
   }
 
   handleChange(event) {
     this.setState({ name: event.target.value });
+  }
+
+  handleSwitch(event) {
+    this.setState({ oxswitch: event.target.value });
   }
 
   handleSubmit(event) {

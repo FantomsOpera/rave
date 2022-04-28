@@ -33,6 +33,7 @@
     "commit": "git pull https://github.com/Pokesi/rave && git add . && git commit -m 'changes' && git push https://github.com/FantomsOpera/rave && git push https://github.com/Pokesi/rave"
   },
   "homepage": ".",
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
