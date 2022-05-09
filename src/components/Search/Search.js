@@ -263,8 +263,9 @@ class Search extends Component {
     contract.functions.registerName(this.state.name, overrides).catch(e => {
       console.error(e);
       Toastify({
-        text: `Unidentified Error: ${e.data.message}`,
+        text: `Unidentified Error: ${e.data.message}, click here to join our chats`,
         duration: `3000`,
+        destination: `https://chats.fantoms.art`
       }).showToast();
     });
   }
