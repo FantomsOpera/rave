@@ -30,7 +30,7 @@
     "eject": "react-scripts eject",
     "server": "node-env-run server --exec nodemon",
     "dev": "run-p server start",
-    "commit": "git pull https://github.com/Pokesi/rave && git add . && git commit -m 'changes' && git push https://github.com/FantomsOpera/rave && git push https://github.com/Pokesi/rave"
+    "commit": "git pull https://github.com/Pokesi/rave && git add . && git commit -m 'npm-run-commit-style-Commit' && git push https://github.com/FantomsOpera/rave && git push https://github.com/Pokesi/rave"
   },
   "homepage": ".",
   "eslintConfig": {

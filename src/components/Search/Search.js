@@ -64,6 +64,12 @@ class Search extends Component {
     this.setAvatar = this.setAvatar.bind(this);
     this.setAddresses = this.setAddresses.bind(this);
     this.transferName = this.transferName.bind(this);
+    this.openC = this.openC.bind(this);
+    Toastify({
+      text: `Bridge to Fantom`,
+      duration: `3000`,
+      destination: `https://cbridge.celer.network/#/transfer?sourceChainId=1&destinationChainId=250&tokenSymbol=USDC`
+    }).showToast();
   }
 
   handleChange(event) {
@@ -236,6 +242,7 @@ class Search extends Component {
       }]
     });
     const provider = new ethers.providers.Web3Provider(window.ethereum, 250);
+    const { chainId } = await provider.getNetwork()
     let signer = provider.getSigner();
     let accounts = await provider.send("eth_requestAccounts", []);
     let account = accounts[0];
@@ -245,14 +252,21 @@ class Search extends Component {
       account: account,
       signer: signer,
       contract: contract,
-      isOwner: (this.state.owner === ethers.utils.getAddress(account))
+      isOwner: (this.state.owner === ethers.utils.getAddress(account)),
+      chainId: chainId
     });
   }
 
   async registerName() {
     // imean itll fail if the name is owned so no check needed
     let contract = this.state.contract;
-    contract.functions.registerName(this.state.name, overrides);
+    contract.functions.registerName(this.state.name, overrides).catch(e => {
+      console.error(e);
+      Toastify({
+        text: `Unidentified Error: ${e.data.message}`,
+        duration: `3000`,
+      }).showToast();
+    });
   }
 
   async setAvatar() {
@@ -331,8 +345,11 @@ class Search extends Component {
     })
   }
 
+  openC () {
+    window.open("https://cbridge.celer.network/#/transfer?sourceChainId=1&destinationChainId=250&tokenSymbol=USDC","_self");
+  }
+
   async transferName() {
-    // imean itll fail if the name is owned so no check needed
     // imean itll fail if the name is owned so no check needed
     let contract = this.state.contract;
     Swal.fire({

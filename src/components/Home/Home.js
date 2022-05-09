@@ -16,6 +16,8 @@ import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
 import twitter from '../../images/Twitter-Logo.png';
+import github from '../../images/gh.png';
+import gitbook from '../../images/gb.svg';
 
 import constants from '../../constants.js';
 
@@ -62,6 +64,11 @@ class Home extends Component {
     return (
       <>
         <header className="App-header">
+          <a href="https://docs.rave.domains/" style={{
+            fontFamily: 'Nunito Sans',
+            fontSize: '13px',
+            alignSelf: 'right'
+          }}>Docs</a><br />
           <img src={logo} className="App-logo" alt="logo" />
           <p style={{
             fontFamily: 'Nunito Sans',
@@ -126,8 +133,14 @@ class Home extends Component {
             }}>
             <a href="https://twitter.com/rave_names" target="_blank" rel="noreferrer">
               <img src={twitter} style={{
-                width: '7vh'
+                width: '4vh'
               }} alt="twiiter" />
+            </a>
+            <a href="https://github.com/FantomsOpera/rave" target="_blank" rel="noreferrer">
+              <img src={github} style={{
+                width: '4vh',
+                paddingLeft: '14px'
+              }} alt="gihub" />
             </a>
           </div>
         </header>
