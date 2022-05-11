@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {
-  Image
-} from "theme-ui";
+
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 class NFTCarousel extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
     <div style={{paddingLeft: 'calc(50% - (22.5vh + 11px))'}}>

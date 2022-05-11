@@ -3,10 +3,6 @@ import logo from '../../RaveBase.png';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-
 import Desc from './Desc/Desc.js';
 import Gallery from './Gallery/Gallery.js';
 import Avatar from './Avatar/Avatar.js';
@@ -17,7 +13,6 @@ import "toastify-js/src/toastify.css";
 
 import twitter from '../../images/Twitter-Logo.png';
 import github from '../../images/gh.png';
-import gitbook from '../../images/gb.svg';
 
 import constants from '../../constants.js';
 

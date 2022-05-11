@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@mdx-js/react": "^2.1.1",
+    "@mui/material": "^5.7.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -18,6 +20,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "react-tooltip": "^4.2.21",
     "sweetalert2": "^11.4.8",
     "theme-ui": "^0.14.2",
     "toastify-js": "^1.11.2",

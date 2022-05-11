@@ -24,6 +24,7 @@ import constants from "../../constants.js";
 import nabi from './neko.js';
 
 import NFTCarousel from './Carousel/NFTCarousel.js';
+import TokenDisplay from './Tokens/Tokens.js';
 
 const nfts = [
   "0x7acee5d0acc520fab33b3ea25d4feef1ffebde73", // cyber nekos
@@ -99,9 +100,7 @@ class Search extends Component {
       isOwned = res[0];
     });
     await fetch(`https://openapi.debank.com/v1/user/chain_balance?id=${owner}&chain_id=ftm&is_all=true&has_balance=true`).then(async res => {
-      console.log(res);
       let json = await res.json();
-      console.log(json);
       worth = json["usd_value"];
     })
     this.setState({
@@ -226,7 +225,6 @@ class Search extends Component {
   }
 
   async connectWallet() {
-    console.log("clicked connectWallet");
     window.ethereum.request({
     method: "wallet_addEthereumChain",
     params: [{
@@ -382,9 +380,6 @@ class Search extends Component {
     if (!this.state.hasDone) {
       this.resolveName();
     }
-    if (this.state.hasDone) {
-      console.log(this.state)
-    }
     return (
       <>
         <title>{`Rave Name: ${this.state.name}`}</title>
@@ -425,6 +420,23 @@ class Search extends Component {
             fontFamily: 'Nunito Sans'
           }}>{"Net Worth: $" + this.state.networth || "loading..."}</p>
         }
+        {this.state.isOwned &&
+          (<div style={{paddingLeft: 'calc(50% - 37.5vh)', paddingTop: "0vh",}}>
+            <Card sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              alignSelf: "center",
+              textAlign: "center",
+              paddingTop: "0px",
+              width: "75vh",
+              height: "10vh",
+            }}>
+              <TokenDisplay address={this.state.owner} style={{width: '75vh', paddingLeft:'20vh'}}/>
+            </Card>
+          </div>)
+        }
+        <br />
         <button onClick={this.connectWallet} className="connectWallet" style={{
             fontFamily: 'Nunito Sans'
         }}>{this.state.account || "Connect Wallet"}</button>
@@ -513,7 +525,7 @@ class Search extends Component {
           </Card>
         </div>
         }
-        <br /><br />
+        <br />
         <div
           style={{
             marginLeft: 'auto',
