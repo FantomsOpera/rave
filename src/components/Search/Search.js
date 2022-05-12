@@ -502,7 +502,6 @@ class Search extends Component {
           </Card>
         </div>}
         <br />
-        <br />
         {(this.state.isOwned && this.state.nftsloaded) &&
         <div style={{paddingLeft: 'calc(50% - 75vh)'}}>
           <Card sx={{

@@ -15,7 +15,6 @@ import tshare from './Images/tshare.png';
 import lqdr from './Images/lqdr.png';
 import ust from './Images/ust.png';
 
-import { BigNumber} from "@ethersproject/bignumber";
 
 const tokens = [
   {
@@ -154,13 +153,14 @@ class TokenDisplay extends Component {
       this.getTokens();
     }
     if (this.state.init) {
-      return (
+      if (this.state.amt > 0) {
+        return (
         <Grid gap={2} columns={[1, null, this.state.amt]} style={{
           alignItems: "center",
           alignSelf: "center",
           textAlign: "center" }}>
           {this.state.balances.wftm > 0 && <Box bg="primary">
-            <Tooltip title={`User holds ${BigNumber.from(this.state.balances.wftm).abs()} wFTM`}>
+            <Tooltip title={`User holds ${this.state.balances.wftm} wFTM`}>
               <img alt="Token Balance" src={wftm} style={{
                 width: '7.5vh'
               }}/>
@@ -224,6 +224,9 @@ class TokenDisplay extends Component {
           </Box>}
         </Grid>
       );
+    } else {
+      return (<p>No tokens.</p>);
+    }
     }
     return (<p>Loading Tokens...</p>);
   }
