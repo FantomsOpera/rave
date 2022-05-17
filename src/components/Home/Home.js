@@ -39,19 +39,12 @@ class Home extends Component {
       Toastify({
         text: `Try searching for an 0x-prefixed name!`,
         duration: `3000`,
-        onClick: function(){
-          this.setState({
-            name: '0xYourName'
-          });
-        },
       }).showToast();
     } else if (toastToShow === 2) {
       Toastify({
         text: `Check out the treasury stats!`,
         duration: `3000`,
-        onClick: function(){
-          this.history(`/treasury/info`)
-        },
+        destination: `https://rave.domains/treasury/info`
       }).showToast();
     }
   }
