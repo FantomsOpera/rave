@@ -23,7 +23,6 @@ class Info extends Component {
 
   render() {
     return (
-      <>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p style={{
@@ -81,7 +80,6 @@ class Info extends Component {
           </div>
           <br />
         </header>
-      </>
     );
   }
 }
