@@ -28,7 +28,7 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
-    let toastToShow = Math.floor(Math.random() * 2);
+    let toastToShow = Math.floor(Math.random() * 3);
     if (toastToShow === 0) {
       Toastify({
         text: `Buy our governance token, $OPR on SpiritSwap!`,
@@ -39,6 +39,19 @@ class Home extends Component {
       Toastify({
         text: `Try searching for an 0x-prefixed name!`,
         duration: `3000`,
+        onClick: function(){
+          this.setState({
+            name: '0xYourName'
+          });
+        },
+      }).showToast();
+    } else if (toastToShow === 2) {
+      Toastify({
+        text: `Check out the treasury stats!`,
+        duration: `3000`,
+        onClick: function(){
+          this.history(`/treasury/info`)
+        },
       }).showToast();
     }
   }
@@ -59,11 +72,6 @@ class Home extends Component {
     return (
       <>
         <header className="App-header">
-          <a href="https://docs.rave.domains/" style={{
-            fontFamily: 'Nunito Sans',
-            fontSize: '13px',
-            alignSelf: 'right'
-          }}>Docs</a><br />
           <img src={logo} className="App-logo" alt="logo" />
           <p style={{
             fontFamily: 'Nunito Sans',
