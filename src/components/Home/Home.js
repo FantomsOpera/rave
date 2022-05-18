@@ -76,7 +76,7 @@ class Home extends Component {
             <label htmlFor="name" style={{
               fontFamily: 'Nunito Sans'
             }}>Search for a Name: </label>
-            <br></br>
+            <br />
               <input
                 id="name"
                 type="text"
@@ -84,6 +84,9 @@ class Home extends Component {
                 value={this.state.name}
                 onChange={this.handleChange}
                 placeholder={constants["FindName"]}
+                style={{
+                  height: '11vh'
+                }}
               />
             <button type="submit" className="search" style={{
               fontFamily: 'Nunito Sans'
@@ -114,6 +117,9 @@ class Home extends Component {
                 className="searchBar"
                 onChange={this.handleChange}
                 placeholder={constants["FindName"]}
+                style={{
+                  height: '11vh'
+                }}
               />
             <button type="submit" className="search" style={{
               fontFamily: 'Nunito Sans'
