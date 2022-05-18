@@ -11,8 +11,9 @@ class App extends Component {
       <div className="App">
         <Routes>
           <Route path="/" element={<WrappedHome />} />
-          <Route path="/:name" element={<WrappedSearch />} />
-          <Route path="/treasury/info" element={<WrappedInfo />} />
+          <Route path="/name" element={<WrappedHome />} />
+          <Route path="/name/:name" element={<WrappedSearch />} />
+          <Route path="/info" element={<WrappedInfo />} />
         </Routes>
       </div>
     );

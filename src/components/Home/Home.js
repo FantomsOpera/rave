@@ -16,6 +16,42 @@ import github from '../../images/gh.png';
 
 import constants from '../../constants.js';
 
+var forb = [
+  "/",
+  "\\",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "+",
+  "=",
+  "|",
+  "{",
+  "}",
+  "<",
+  ">",
+  "?",
+  "~"
+]
+
+function formatName(name) {
+  console.log(forb.length);
+  for (var i = 0; i < forb.length; i++) {
+    console.log(forb.length);
+    console.log(forb[i]);
+    console.log(i);
+    name = name.replace(forb[i],"");
+  }
+  return name;
+}
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +86,7 @@ class Home extends Component {
   }
 
   handleChange(event) {
-    this.setState({ name: event.target.value });
+    this.setState({ name: formatName(event.target.value) });
   }
 
   handleSwitch(event) {
@@ -58,7 +94,7 @@ class Home extends Component {
   }
 
   handleSubmit(event) {
-    this.history(`/${this.state.name}`);
+    this.history(`/name/${this.state.name}`);
   }
 
   render() {
