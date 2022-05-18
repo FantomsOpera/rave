@@ -80,7 +80,7 @@ class Home extends Component {
       Toastify({
         text: `Check out the treasury stats!`,
         duration: `3000`,
-        destination: `https://rave.domains/treasury/info`
+        destination: `https://rave.domains/info`
       }).showToast();
     }
   }
