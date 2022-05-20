@@ -225,34 +225,34 @@ class Search extends Component {
   }
 
   async connectWallet() {
-    window.ethereum.request({
-    method: "wallet_addEthereumChain",
-    params: [{
-        chainId: "0xFA",
-        rpcUrls: ["https://rpc.ftm.tools"],
-        chainName: "Fantom Opera",
-        nativeCurrency: {
-            name: "FTM",
-            symbol: "FTM",
-            decimals: 18
-        },
-        blockExplorerUrls: ["https://ftmscan.com/"]
-      }]
-    });
-    const provider = new ethers.providers.Web3Provider(window.ethereum, 250);
-    const { chainId } = await provider.getNetwork()
-    let signer = provider.getSigner();
-    let accounts = await provider.send("eth_requestAccounts", []);
-    let account = accounts[0];
-    let contract = new ethers.Contract(contract_address, abi, signer);
-    this.setState({
-      provider: provider,
-      account: account,
-      signer: signer,
-      contract: contract,
-      isOwner: (this.state.owner === ethers.utils.getAddress(account)),
-      chainId: chainId
-    });
+      window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [{
+          chainId: "0xFA",
+          rpcUrls: ["https://rpc.ftm.tools"],
+          chainName: "Fantom Opera",
+          nativeCurrency: {
+              name: "FTM",
+              symbol: "FTM",
+              decimals: 18
+          },
+          blockExplorerUrls: ["https://ftmscan.com/"]
+        }]
+      });
+      const provider = new ethers.providers.Web3Provider(window.ethereum, 250);
+      const { chainId } = await provider.getNetwork()
+      let signer = provider.getSigner();
+      let accounts = await provider.send("eth_requestAccounts", []);
+      let account = accounts[0];
+      let contract = new ethers.Contract(contract_address, abi, signer);
+      this.setState({
+        provider: provider,
+        account: account,
+        signer: signer,
+        contract: contract,
+        isOwner: (this.state.owner === ethers.utils.getAddress(account)),
+        chainId: chainId
+      });
   }
 
   async registerName() {
@@ -327,7 +327,7 @@ class Search extends Component {
             avax: $('#avax').val(),
             bnb: $('#bnb').val(),
             luna: $('#luna').val(),
-            near: $('#near').val()
+            near: $('#near').val(),
           })
         })
       },
@@ -525,18 +525,6 @@ class Search extends Component {
         </div>
         }
         <br />
-        <div
-          style={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            display: 'inline'
-          }}>
-          <a href="https://twitter.com/rave_names" target="_blank" rel="noreferrer">
-            <img src={twitter} style={{
-              width: '7vh'
-            }} alt="trwiiter" />
-          </a>
-        </div>
         </header>
       </>
     );
