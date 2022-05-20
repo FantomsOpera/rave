@@ -16,7 +16,6 @@ import $ from 'jquery';
 
 import { fns } from "fns-helper";
 import { abi, contract_address, overrides } from "./fns.js";
-import twitter from '../../images/Twitter-Logo.png';
 
 import { truncateAddress } from "../../helpers/truncateAddress.js";
 import { ethers } from 'ethers';
@@ -385,7 +384,7 @@ class Search extends Component {
         <title>{`Rave Name: ${this.state.name}`}</title>
         <header className="App-header">
         <br />
-        { (this.state.avatar.length > 0) ? ( <div className="Logo-crop">
+        { (this.state.avatar.split("").length > 0) ? ( <div className="Logo-crop">
           <Image src={this.state.avatar} style={{
           borderRadius: '50%',
           height: '30vmin',
