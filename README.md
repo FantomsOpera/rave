@@ -1,10 +1,37 @@
-# Getting Started with Create React App
+# [Rave Site v2](https://rave.domains/)
+### Rave Site v1 can be accessed [here](https://fns-old.fantoms.art/).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run locally
+
+To fork the most up-to-date UI, use these steps:
+
+1) Clone the repo & install deps
+```
+$ git clone https://github.com/FantomsOpera/rave RaveSiteV2
+$ # if you are using NPM
+$ npm install
+$ # if you are using Yarn
+$ yarn install
+```
+
+2) Run the test suite:
+`npm run-script start`
+
+## Routes
+
+### `/`
+The homepage
+
+### `/name/:name`
+Shows info for a name (:name can be 0x-prefixed, or the site will append .ftm)
+
+### `/info`
+Shows treasury info
+
+### `/*`
+404 fallback page
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
@@ -39,32 +66,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### `npm run commit`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Note, you will have to change the git urls**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Commits to the main branch.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## For later use
 
 ### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
