@@ -12,10 +12,10 @@ class App extends Component {
   render() {
     return (
     <div className="App">
-      {/*<Scrollbar style={{
+      <Scrollbar style={{
         width: '100%',
         height: '100%'
-      }}>*/}
+      }}>
         <Routes>
           <Route path="/" element={<WrappedHome />} />
           <Route path="/name" element={<WrappedHome />} />
@@ -23,7 +23,7 @@ class App extends Component {
           <Route path="/info" element={<WrappedInfo />} />
           <Route path="/*" element={<Wrapped404 />} />
         </Routes>
-      {/*</Scrollbar>*/}
+      </Scrollbar>
     </div>
     );
   }
