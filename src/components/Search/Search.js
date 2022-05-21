@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../../RaveBase.png';
 import './App.css';
+import logo from './RaveBase-min.png';
 import { useParams } from "react-router-dom";
 
 import {
