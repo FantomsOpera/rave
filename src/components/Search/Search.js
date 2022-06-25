@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import logo from './RaveBase-min.png';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import {
   Heading,
@@ -70,9 +70,10 @@ class Search extends Component {
     this.openC = this.openC.bind(this);
     Toastify({
       text: `Bridge to Fantom here!`,
-      duration: `10000`,
+      duration: `3000`,
       onClick: function(){
-        this.history(`/bridge`);
+        console.log(this.props);
+        props.history(`/bridge`);
       }
     }).showToast();
   }
@@ -573,7 +574,8 @@ const WrappedSearch = props => {
   } else if (!(name.endsWith('.ftm'))) {
     name = `${name}.ftm`
   }
-  return <Search name={name} />;
+  const history = useNavigate();
+  return <Search name={name} history={history} />;
 }
 
 export default WrappedSearch;
