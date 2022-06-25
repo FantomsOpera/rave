@@ -69,9 +69,11 @@ class Search extends Component {
     this.transferName = this.transferName.bind(this);
     this.openC = this.openC.bind(this);
     Toastify({
-      text: `Bridge to Fantom`,
-      duration: `3000`,
-      destination: `https://cbridge.celer.network/#/transfer?sourceChainId=1&destinationChainId=250&tokenSymbol=USDC`
+      text: `Bridge to Fantom here!`,
+      duration: `10000`,
+      onClick: function(){
+        this.history(`/bridge`);
+      }
     }).showToast();
   }
 
