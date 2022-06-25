@@ -26,14 +26,14 @@ class Gallery extends Component {
         <Heading as="h2" style={{
           fontFamily: 'Nunito Sans'
         }}>
-          Upgrade your on-chain identity
+          Upgrade your <Text className={'hi-gradient'}>on-chain identity</Text>
         </Heading>
         <Text style={{
           fontFamily: 'Nunito Sans'
         }}>
-          <strong>Set a custom avatar, to use anywhere</strong>
+          <strong>Set a <Text className={'hi-gradient reverse'}>custom avatar</Text> , to use anywhere</strong>
           <br />
-          Store image metadata in the Rave contract!
+          Store image metadata in the Rave system!
         </Text>
         <Image style={{
           width: '40vh',

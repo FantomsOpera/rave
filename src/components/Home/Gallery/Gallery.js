@@ -26,14 +26,14 @@ class Gallery extends Component {
         <Heading as="h2" style={{
           fontFamily: 'Nunito Sans'
         }}>
-          Put your NFTs on the grandstand.
+          Put your <Text className={'hi-gradient'}>NFTs</Text> on the grandstand.
         </Heading>
         <Text style={{
           fontFamily: 'Nunito Sans'
         }}>
           <strong>Get your very own podium, for your NFTs</strong>
           <br />
-          Every Rave Name comes with an NFT gallery, accessible by anyone
+          Every Rave Name comes with an NFT gallery, <Text className={'hi-gradient reverse'}>accessible by anyone</Text>
         </Text>
         <Image style={{
           width: '125vh',

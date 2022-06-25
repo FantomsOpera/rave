@@ -33,6 +33,17 @@ button[type=submit] {
   cursor: pointer;
 }
 
+.hi-gradient {
+  color: #caf0f8;
+  background-image: linear-gradient(90deg, #03045E, #0096C7);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.reverse {
+  background-image: linear-gradient(90deg, #0096C7, #03045E);
+}
+
 @media (prefers-reduced-motion: no-preference) {
 
 }

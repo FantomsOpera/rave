@@ -26,14 +26,12 @@ class Desc extends Component {
         <Heading as="h2" style={{
           fontFamily: 'Nunito Sans'
         }}>
-          By the community, for the community
+          The <Text className={'hi-gradient reverse'}>cheapest reservation fees</Text> in all of crypto
         </Heading>
         <Text style={{
           fontFamily: 'Nunito Sans'
         }}>
-          <strong>The cheapest reservation fees in all of crypto</strong>
-          <br />
-          Why pay $50, when you can pay just 5 FTM?
+          Why pay $50, when you can pay just <Text className={'hi-gradient'}>5 FTM</Text> ?
         </Text>
         <Image style={{
           width: '125vh',

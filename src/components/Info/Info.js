@@ -3,7 +3,7 @@ import logo from '../../RaveBase.png';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
 
-import { Grid, Box } from 'theme-ui';
+import { Grid, Box, Text } from 'theme-ui';
 
 import { getInfo } from '../../helpers/getInfo.js';
 
@@ -34,7 +34,7 @@ class Info extends Component {
           {this.state.totalSupply && <p style={{
             fontFamily: 'Nunito Sans',
             fontSize: '32px'
-          }}>{parseInt(this.state.totalSupply._hex, 16) || "loading..."} Rave Names registered</p>}
+          }}><Text className={'hi-gradient'}>{parseInt(this.state.totalSupply._hex, 16) || "loading..."} Rave Names registered</Text></p>}
           <p style={{
             fontFamily: 'Nunito Sans',
             fontSize: '32px'
@@ -74,7 +74,7 @@ class Info extends Component {
                   <p style={{
                     fontSize: '24px',
                     paddingRight: '2.5vh'
-                  }}>${this.state.debt} in treasury debt.</p>
+                  }}>{this.state.debt < 1 ? (<><Text className={'hi-gradient'}>${this.state.debt}</Text><Text>{' in treasury debt.'}</Text></>) : (`$${this.state.debt} in treasury debt.`)}</p>
                 </Box>
             </Grid>
           </div>

@@ -14,6 +14,13 @@ html {
   /*text-align: center;*/
 }
 
+.hi-gradient {
+  color: #caf0f8;
+  background-image: linear-gradient(90deg, #03045E, #0096C7);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
 .Logo-crop {
   overflow: hidden;
   border-radius: 50%;
@@ -59,11 +66,18 @@ button[type=submit] {
   border: 3px solid var(--light);
   border-radius: 15px;
   background-color: var(--light);
-  padding-left: 3px;
+  padding: 5px;
   cursor: pointer;
 }
-.connectWallet #disbled {
+
+#disbled {
   cursor: not-allowed;
+}
+
+#isOwner {
+  border: none;
+  color: #caf0f8;
+  background: linear-gradient(90deg, #03045E, #0096C7);
 }
 
 @media (prefers-reduced-motion: no-preference) {

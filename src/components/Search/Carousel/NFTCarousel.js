@@ -121,6 +121,48 @@ class NFTCarousel extends Component {
             <p>{`PDP #${obj}`}</p>
           </div>)
         })}
+        {this.props.nfts.rgoools.map((obj, i) => {
+          let logo = `https://clouflare-ipfs.com/ipfs/QmUYKrRYu7rEjF9vvqyaptbEPV22EUG5me229rDsdXVCrC/${obj}.png`
+
+          return (
+          <div>
+            <img
+              className="d-block w-100"
+              src={logo}
+              alt={`Riot Goool #${obj}`}
+            />
+
+            <p>{`Riot Goool #${obj}`}</p>
+          </div>)
+        })}
+        {this.props.nfts.mgoools.map((obj, i) => {
+          let logo = `https://ipfs.io/ipfs/QmZiYNrBa73kjeR2DRwvS7pC7PMZpzfPV342KTnDa53fAH/${obj}.png`
+
+          return (
+          <div>
+            <img
+              className="d-block w-100"
+              src={logo}
+              alt={`Magical Goool #${obj}`}
+            />
+
+            <p>{`Magical Goool #${obj}`}</p>
+          </div>)
+        })}
+        {this.props.nfts.pgoools.map((obj, i) => {
+          let logo = `https://ipfs.io/ipfs/QmZ8buoR6zpZDR5SBk9nvJJWzzLvjssBeWcenAcPMmKYTE/${obj}.png`
+
+          return (
+          <div>
+            <img
+              className="d-block w-100"
+              src={logo}
+              alt={`Power Goool #${obj}`}
+            />
+
+            <p>{`Power Goool #${obj}`}</p>
+          </div>)
+        })}
       </Carousel>
     </div>
     );

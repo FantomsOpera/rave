@@ -15,6 +15,13 @@ html {
   text-align: center;
 }
 
+.hi-gradient {
+  color: #caf0f8;
+  background-image: linear-gradient(90deg, #03045E, #0096C7);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
 .App-logo {
   height: 30vmin;
   pointer-events: none;

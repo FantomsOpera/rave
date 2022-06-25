@@ -26,7 +26,7 @@ class Integrations extends Component {
         <Heading as="h2" style={{
           fontFamily: 'Nunito Sans'
         }}>
-          Where to use
+          Where to <Text className={'hi-gradient'}>use Rave</Text>
         </Heading>
         <Text style={{
           fontFamily: 'Nunito Sans'

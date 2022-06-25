@@ -39,7 +39,10 @@ const nfts = [
   "0x28908D5795B4D8f4Cc175C63523F974412F2A5B1", // shibafantom
   "0x8E7c434B248d49D873D0F8448E0FcEc895b1b92D", // degenerabbits
   "0xd81d78F9D6Eb3Efab060aa213f686f02d1705553", // chunk
-  "0x9FaA278cB088294eA00bE2895F5FAB8D091bB946"  // pdp
+  "0x9FaA278cB088294eA00bE2895F5FAB8D091bB946", // pdp
+  "0x4f504ab2e7b196a4165ab3db71e75cb2b37070e0", // rGoools
+  "0x673Ce61e0Ec7fAD6c6Fe689193a0AdEF38567965", // mGoools
+  "0x98abb0aa746a1e35fe54b522a12164ea1e034e96"  // pGoools
 ]
 
 
@@ -125,7 +128,10 @@ class Search extends Component {
       shiba: [],
       rabbits: [],
       chunk: [],
-      ppunks: []
+      ppunks: [],
+      rgoools: [],
+      mgoools: [],
+      pgoools: [],
     };
     let prov = new ethers.providers.JsonRpcProvider('https://rpc.ftm.tools');
     let neko = new ethers.Contract(nfts[0],nabi,prov);
@@ -216,6 +222,31 @@ class Search extends Component {
           ownednfts.ppunks.push(ress[0]);
         }).catch((e) => {});
       }
+    });
+    //                                                                                                              \\
+    let rgoools = new ethers.Contract(nfts[14],nabi,prov);
+    await rgoools.functions.balanceOf(this.state.owner).then(async res => {
+      if (res[0] <= 0) return;
+      for (let i = 0; i < res[0]; i++) {
+        await rgoools.functions.tokenOfOwnerByIndex(this.state.owner,i).then(ress => {
+          ownednfts.rgoools.push(ress[0]);
+        }).catch((e) => {});
+      }
+    });
+    //                                                                                                              \\
+    let mgoools = new ethers.Contract(nfts[14],nabi,prov);
+    await mgoools.functions.balanceOf(this.state.owner).then(async res => {
+      if (res[0] <= 0) return;
+      for (let i = 0; i < res[0]; i++) {
+        await mgoools.functions.tokenOfOwnerByIndex(this.state.owner,i).then(ress => {
+          ownednfts.mgoools.push(ress[0]);
+        }).catch((e) => {});
+      }
+    });
+    //                                                                                                              \\
+    let pgoools = new ethers.Contract(nfts[14],nabi,prov);
+    await pgoools.functions.walletOfOwner(this.state.owner).then(async res => {
+      ownednfts.pgoools = (res[0]);
     });
     this.setState({
       nfts: ownednfts,
@@ -378,6 +409,7 @@ class Search extends Component {
   render() {
     if (!this.state.hasDone) {
       this.resolveName();
+      this.connectWallet();
     }
     return (
       <>
@@ -404,14 +436,14 @@ class Search extends Component {
             fontFamily: 'Nunito Sans',
             fontSize: '31px'
           }}>
-            {this.state.name} <a href={`https://ftmscan.com/address/${this.state.owner}`} target="_blank" rel="noreferrer" className="Address-text">{truncateAddress(this.state.owner)}</a>
+            <Text className={'hi-gradient'}>{this.state.name}</Text> <a href={`https://ftmscan.com/address/${this.state.owner}`} target="_blank" rel="noreferrer" className="Address-text">{truncateAddress(this.state.owner)}</a>
           </p>
         ) : (
           <p style={{
             fontFamily: 'Nunito Sans',
             fontSize: '31px'
           }}>
-            {this.state.name} <a href={`https://ftmscan.com/address/${constants["NoAddress"]}`} target="_blank" rel="noreferrer" className="Address-text">Not owned</a>
+            <Text className={'hi-gradient'}>{this.state.name}</Text> <a href={`https://ftmscan.com/address/${constants["NoAddress"]}`} target="_blank" rel="noreferrer" className="Address-text">Not owned</a>
           </p>
         )}
         {this.state.isOwned &&
@@ -441,7 +473,7 @@ class Search extends Component {
         }}>{this.state.account || "Connect Wallet"}</button>
         <br /><br />
         {this.state.isOwned ? (
-          <button id="disabled" className="connectWallet" style={{
+          <button id={(!this.state.isOwner) ? "disabled" : "isOwner"} className="connectWallet" style={{
             fontFamily: 'Nunito Sans'
           }}>{this.state.isOwner ? (`You own ${this.state.name}`) : (`${this.state.name} is taken`)}</button>
         ) : (
@@ -517,8 +549,10 @@ class Search extends Component {
               <Heading as="h2" style={{
                 fontFamily: 'Nunito Sans'
               }}>
-                NFTs owned by {this.state.name}.
+                <Text className={'hi-gradient'}>NFTs owned by {this.state.name}.</Text>
+                <br />
               </Heading>
+              <br />
               <NFTCarousel nfts={this.state.nfts} showThumbs={false} style={{width: '75vh', paddingLeft:'20vh'}}/>
           </Card>
         </div>
